@@ -1,15 +1,19 @@
-import { Alunas } from './../../listaPreConstruida';
 import { turma } from "../../listaPreConstruida";
 
 function retornarObjetos() {
-    type Alunas = {
+    interface Alunas  {
         nome: String,
-        media: Number,
+        media: String,
         aprovado: Boolean;
     }
 
     const resultados: Alunas[] = turma.map((aluna) => ({
-        nome: String,
-        media: Number
+        nome: aluna.nome,
+        media: ((aluna.prova.p1 + aluna.prova.p2 + aluna.prova.p3) / 3).toFixed(1),
+        aprovado: (aluna.prova.p1 + aluna.prova.p2 + aluna.prova.p3) / 3 >= 7
     }));
+
+    return resultados;
 }
+
+console.log(retornarObjetos());
